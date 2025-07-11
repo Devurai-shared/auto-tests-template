@@ -24,6 +24,7 @@
   "author": "Yevhen Petryk",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.54.0",
     "@types/lodash": "^4.14.202",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "eslint": "^8.56.0",
@@ -39,7 +40,6 @@
   "dependencies": {
     "@axe-core/playwright": "^4.8.2",
     "@faker-js/faker": "^8.3.1",
-    "@playwright/test": "^1.40.1",
     "ajv": "^8.12.0",
     "date-fns": "^3.0.6",
     "dayjs": "^1.11.10",

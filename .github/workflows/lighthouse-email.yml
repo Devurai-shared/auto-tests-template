@@ -1,0 +1,31 @@
+name: Lighthouse Tests with Email
+
+on:
+  schedule:
+    - cron: '0 8 * * 1-5' # Щодня о 8:00 ранку (UTC)
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+      - name: Run Lighthouse tests
+        run: WEB_URL=https://devurai.com npm run test:lighthouse
+      - name: Send Lighthouse report via email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Lighthouse Report for devurai.com"
+          to: ms@devurai.com
+          from: "Lighthouse Bot <shared@devurai.com>"
+          body: "Дивись HTML-звіт у вкладенні."
+          attachments: reports/html-report/index.html 
