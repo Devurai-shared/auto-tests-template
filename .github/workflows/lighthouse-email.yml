@@ -17,6 +17,11 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Lighthouse tests
         run: WEB_URL=https://devurai.com npm run test:lighthouse
+      - name: Upload Lighthouse HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: reports/html-report/index.html
       - name: Send Lighthouse report via email
         uses: dawidd6/action-send-mail@v3
         with:
