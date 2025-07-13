@@ -3,7 +3,7 @@ import { type Browser, type BrowserContext, type Page, chromium } from '@playwri
 async function createBrowser(): Promise<Browser> {
   return chromium.launch({
     args: ['--remote-debugging-port=9222'],
-    headless: false,
+    headless: true,
   });
 }
 
