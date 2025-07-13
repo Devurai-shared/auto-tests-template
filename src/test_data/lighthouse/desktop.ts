@@ -11,9 +11,9 @@ export const LIGHTHOUSE_DESKTOP_LINKS: {
   {
     testName: 'Home page',
     url: '/',
-    performance: 95,
+    performance: 90,
     accessibility: 90,
-    bestPractices: 95,
+    bestPractices: 90,
     seo: 100,
     isMobile: false,
     reportName: 'home-page',

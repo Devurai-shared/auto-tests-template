@@ -8,20 +8,28 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    env:
+      WEB_URL: https://devurai.com 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+      
       - name: Install dependencies
         run: npm install
+      
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
+      
       - name: Run Lighthouse tests
-        run: WEB_URL=https://devurai.com npm run test:lighthouse
-      - name: Upload Lighthouse HTML report
-        uses: actions/upload-artifact@v4
+        run: xvfb-run npm run test:lighthouse
+      
+      - name: Upload blob report to GitHub Actions Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
         with:
-          name: lighthouse-report
-          path: reports/html-report/index.html
+          name: all-blob-reports
+          path: blob-report
+          retention-days: 1
       - name: Send Lighthouse report via email
         uses: dawidd6/action-send-mail@v4
         with:
