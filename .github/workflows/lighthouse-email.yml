@@ -1,8 +1,8 @@
 name: Lighthouse Tests with Email
 
 on:
-  schedule:
-    - cron: '0 8 * * 1-5' # Щодня о 8:00 ранку (UTC)
+  # schedule:
+    # - cron: '0 8 * * 1-5' # Щодня о 8:00 ранку (UTC)
   workflow_dispatch:
 
 jobs:
